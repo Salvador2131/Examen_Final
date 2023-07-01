@@ -1,0 +1,711 @@
+/* Estilos CSS para la página web de Grupo Cero */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+/* Estilos para el encabezado */
+header {
+	background-color: white;
+	padding: 50px;
+	box-shadow: 0 4px 6px black;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+header img {
+	height: 50px;
+}
+
+nav ul {
+	list-style: none;
+	display: flex;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	margin-right: 20px;
+}
+
+nav a {
+	color: gray;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/* Estilos para Carrusel */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#container-slider {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+#slider {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100vh;
+	min-height: 500px;
+}
+
+#slider li {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	width: 100%;
+	height: 100%;
+	display: block;
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-ms-transition: opacity 1s;
+	-o-transition: opacity 1s;
+	transition: opacity 1s;
+	z-index: -1;
+	opacity: 0;
+}
+
+#container-slider .arrowPrev,
+#container-slider .arrowNext {
+	font-size: 30pt;
+	color: rgba(204, 204, 204, 0.65);
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	left: 50px;
+	z-index: 2;
+}
+
+#container-slider .arrowNext {
+	left: initial;
+	right: 50px !important;
+}
+
+.content_slider {
+	padding: 15px 30px;
+	color: #FFF;
+	width: 100%;
+	height: 100%;
+}
+
+.content_slider div {
+	text-align: center;
+}
+
+.content_slider h2 {
+	font-family: 'arial';
+	font-size: 30pt;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+.content_slider p {
+	font-size: 15pt;
+	font-family: 'arial';
+	color: #FFF;
+	margin-bottom: 20px;
+}
+
+#slider li .content_slider {
+	background: rgba(0, 0, 0, 0.50);
+	padding: 10px 125px;
+}
+
+.content_slider {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btnSlider {
+	color: #FFF;
+	font-size: 15pt;
+	font-family: 'arial';
+	letter-spacing: 1px;
+	padding: 10px 50px;
+	border: 1px solid #CCC;
+	background: rgba(13, 13, 13, 0.55);
+	border-radius: 31px;
+	text-decoration: none;
+	transition: .5s all;
+}
+
+.btnSlider:hover {
+	background: #111;
+	border: 1px solid #111;
+}
+
+.listslider {
+	position: absolute;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	left: 50%;
+	bottom: 5%;
+	list-style: none;
+	z-index: 2;
+	transform: translateX(-50%);
+}
+
+.listslider li {
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+	margin: 0 5px;
+}
+
+.listslider li a {
+	background: #CCC;
+	border-radius: 50%;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.item-select-slid {
+	background: #FFF !important;
+}
+
+@media screen and (max-width: 460px) {
+	.content_slider h2 {
+		font-size: 15pt !important;
+	}
+
+	.content_slider p {
+		font-size: 12pt !important;
+	}
+
+	#container-slider .arrowPrev,
+	#container-slider .arrowNext {
+		font-size: 20pt;
+	}
+
+	#container-slider .arrowPrev {
+		left: 15px;
+	}
+
+	#container-slider .arrowNext {
+		right: 15px !important;
+	}
+
+	#slider {
+		height: 400px;
+		min-height: 400px;
+	}
+
+	#slider li .content_slider {
+		padding: 10px 35px;
+	}
+
+	.btnSlider {
+		padding: 10px 30px;
+		font-size: 10pt;
+	}
+
+}
+
+/* Estilos para la opción de búsqueda */
+#busqueda {
+	padding: 50px 20px;
+	text-align: center;
+}
+
+#busqueda h1 {
+	margin-bottom: 20px;
+}
+
+#busqueda form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#busqueda label {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+#busqueda input[type="text"] {
+	padding: 10px;
+	margin-bottom: 20px;
+	font-size: 16px;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	width: 100%;
+	max-width: 400px;
+	box-sizing: border-box;
+}
+
+#busqueda input[type="submit"] {
+	padding: 10px 20px;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+#busqueda input[type="submit"]:hover {
+	background-color: #333;
+}
+
+/* Estilos para galeria de imagenes */
+#destacados2 {
+	padding: 10px 10px;
+	background-color: white;
+}
+
+#destacados2 h3 {
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.gallery img {
+	width: calc(33.33% - 10px);
+	margin-bottom: 20px;
+}
+
+@media screen and (max-width: 767px) {
+	.gallery img {
+		width: calc(50% - 10px);
+	}
+}
+
+.enlace1 {
+	cursor: pointer;
+}
+
+.enlace2 {
+	cursor: pointer;
+}
+
+.enlace3 {
+	cursor: pointer;
+}
+
+.enlace4 {
+	cursor: pointer;
+}
+
+.enlace5 {
+	cursor: pointer;
+}
+
+.enlace6 {
+	cursor: pointer;
+}
+
+.enlace7 {
+	cursor: pointer;
+}
+
+.enlace8 {
+	cursor: pointer;
+}
+
+.enlace9 {
+	cursor: pointer;
+}
+
+.enlace10 {
+	cursor: pointer;
+}
+
+.enlace11 {
+	cursor: pointer;
+}
+
+.enlace12 {
+	cursor: pointer;
+}
+
+.image-details {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 40px;
+}
+
+.image-container {
+	flex-basis: 60%;
+}
+
+.image-container img {
+	max-width: 100%;
+}
+
+.details-container {
+	flex-basis: 35%;
+}
+
+.details-container h2 {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.details-container p {
+	margin-bottom: 1rem;
+}
+
+.additional-images {
+	margin-top: 2rem;
+}
+
+.additional-images h3 {
+	margin-bottom: 1rem;
+}
+
+.image-thumbnails {
+	display: flex;
+}
+
+.image-thumbnails img {
+	max-width: 100px;
+	margin-right: 1rem;
+	cursor: pointer;
+}
+
+/* Estilos para ver mas */
+h5 {
+	background-color: white;
+	text-align: right;
+	padding: 20px;
+}
+
+/* Estilos para el pie de página */
+footer {
+	background-color: #333;
+	color: white;
+	padding: 20px;
+	text-align: center;
+}
+
+
+/* Importación de fuentes de google fonts */
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
+
+/* Estilos para la opción de formulario de contacto*/
+.contact_form {
+	width: 460px;
+	height: auto;
+	margin: 20px auto;
+	border-radius: 10px;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	background-color: #fbfbfb;
+	padding-left: 30px;
+}
+
+input {
+	background-color: #fbfbfb;
+	width: 408px;
+	height: 40px;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	margin-top: 10px;
+	padding-left: 10px;
+	margin-bottom: 20px;
+}
+
+textarea {
+	background-color: #fbfbfb;
+	width: 405px;
+	height: 150px;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	margin-top: 10px;
+	padding-left: 10px;
+	margin-bottom: 20px;
+	padding-top: 15px;
+}
+
+label {
+	display: block;
+	float: center;
+}
+
+button {
+	height: 45px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	text-transform: uppercase;
+	background-color: black;
+	border-color: black;
+	border-style: solid;
+	border-radius: 10px;
+	width: 420px;
+	cursor: pointer;
+}
+
+button p {
+	color: #fff;
+}
+
+span {
+	color: black;
+}
+
+.aviso {
+	font-size: 13px;
+	color: #0e0e0e;
+}
+
+h3 {
+	font-size: 16px;
+	padding-bottom: 30px;
+	color: #0e0e0e;
+}
+
+p {
+	font-size: 14px;
+	color: #0e0e0e;
+}
+
+::-webkit-input-placeholder {
+	color: #a8a8a8;
+}
+
+::-webkit-textarea-placeholder {
+	color: #a8a8a8;
+}
+
+.formulario input:focus {
+	outline: 0;
+	border: 1px solid #97d848;
+}
+
+.formulario textarea:focus {
+	outline: 0;
+	border: 1px solid #97d848;
+}
+
+/* Estilos para sitio Artistas*/
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 20px;
+	width: 250px;
+	background-color: #f2f2f2;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+	padding: 20px;
+}
+
+.card-img-top {
+	width: 50%;
+	height: 50%;
+
+	object-fit: inherit;
+	border-radius: 50%;
+	margin-bottom: 10px;
+}
+
+
+
+/* Agregar estilo al nuevo párrafo */
+.centrado {
+	text-align: center;
+	font-size: 1.2rem;
+	color: #555;
+	margin: 2rem auto;
+}
+
+/* Botones Iniciar Sesion & Registrarse */
+
+.auth-buttons {
+	margin-left: auto;
+}
+
+.auth-buttons a {
+	color: #fff;
+	font-weight: bold;
+	margin-left: 20px;
+}
+
+#login-form {
+	width: 300px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #f7f7f7;
+	border-radius: 5px;
+  }
+  
+  #login-form h2 {
+	margin-top: 0;
+  }
+  
+  #login-form label {
+	display: block;
+	margin-bottom: 10px;
+  }
+  
+  #login-form input[type="email"],
+  #login-form input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border: none;
+  }
+  
+  #login-form button[type="submit"] {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-top: 20px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+  }
+
+/* REGISTRARSE */
+#register-form {
+	width: 300px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #f7f7f7;
+	border-radius: 5px;
+  }
+  
+  #register-form h2 {
+	margin-top: 0;
+  }
+  
+  #register-form label {
+	display: block;
+	margin-bottom: 10px;
+  }
+  
+  #register-form input[type="text"],
+  #register-form input[type="email"],
+  #register-form input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border: none;
+  }
+  
+  #register-form button[type="submit"] {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-top: 20px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+  }
+
+/* Estilos para el modal */
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+	display: block;
+	position: relative;
+	margin: auto;
+	padding: 0;
+	width: 80%;
+	max-width: 1200px;
+	height: auto;
+	max-height: 90%;
+	background-color: #fff;
+	overflow: auto;
+}
+
+.modal-header,
+.modal-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+	background-color: #444;
+	color: black;
+}
+
+.modal-body {
+	padding: 2rem;
+}
+
+/* Estilos para los botones */
+
+.btn {
+	display: inline-block;
+	margin: 0.5rem;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: #444;
+	border: none;
+	border-radius: 0.25rem;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #222;
+}
+
+/* Estilos para los enlaces */
+
+a {
+	color: #444;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}

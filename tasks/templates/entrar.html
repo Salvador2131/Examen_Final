@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Entrar</h1>
+
+{{error}}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+        <form action="/entrar/" method="POST" class="">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button>
+                entrar
+            </button>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

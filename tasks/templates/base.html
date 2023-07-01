@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base</title>
+    {# Load the tag library #}
+    {% load bootstrap5 %}
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+    {# Display a form #}
+</head>
+<body>
+    <div class="p-5 bg-primary text-white text-center">
+    <h1>GRUPO 0</h1>
+    <p>SUBTITULO</p>
+    </div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="/object/project/">Project</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/object/task">Task</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="/signup">Singup</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/entrar">Entrar</a>
+        </li>
+        {% endif %}
+        </ul>
+    </div>
+    </nav>
+    {% block content %}
+
+    {% endblock %}
+    <div class="mt-5 p-4 bg-dark text-white text-center">
+    <p>Footer</p>
+    </div>
+
+</body>
+
+</html>
