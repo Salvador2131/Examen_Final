@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h2 class="mb-4">Formulario de proyectos</h2>
-        <form method="post" class="row g-3">
+    <h2 class="mb-4">Formulario de artista</h2>
+    <form method="post" class="row g-3">
         {% csrf_token %}
         <div class="col-12">
             {{ form.as_p }}
         </div>
         <div class="col-12">
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'artista_list' %}'">Volver</button>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
-        </form>
-    <div>
+    </form>
 {% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="mb-4">Lista de obras</h2>
+    <a href="{% url 'obra_create' %}" class="btn btn-success mb-3">Vender nueva Obra</a>
+    {% for obra in obras %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ obra.image.url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ obra }}</span>
+            <div>
+                <a href="{% url 'obra_edit' obra.id %}" class="btn btn-primary btn-sm">Editar</a>
+                <a href="{% url 'obra_delete' obra.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+            </div>
+        </div>
+    {% empty %}
+        <div class="list-group-item">No hay proyectos disponibles.</div>
+    {% endfor %}
+{% endblock %}

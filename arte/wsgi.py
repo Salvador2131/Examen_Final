@@ -1,5 +1,5 @@
 """
-WSGI config for arte project.
+WSGI config for arte artista.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

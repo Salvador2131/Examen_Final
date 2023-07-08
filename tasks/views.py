@@ -1,15 +1,15 @@
-from django.shortcuts import render, redirect,get_object_or_404
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse, JsonResponse
-from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
-from django.views import View 
-from .forms import TaskForm
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views import View
+
 
 def home(request):
-    
     return render(request, 'home.html')
+
 
 def signup(request):
     if request.method == 'GET':
@@ -34,9 +34,11 @@ def signup(request):
         'error': 'contraseñas no coinciden'
     })
 
+
 def cerrar(request):
     logout(request)
     return redirect('home')
+
 
 def entrar(request):
     if request.method == 'GET':
@@ -49,98 +51,104 @@ def entrar(request):
         if user is None:
             return render(request, 'entrar.html', {
                 'form': AuthenticationForm,
-                'error' : 'usuario o contraseña incorrectos'
+                'error': 'usuario o contraseña incorrectos'
             })
-        else :
+        else:
             login(request, user)
             return redirect('home')
 
-###   view de proyecto   #
-from .models import Project
-from .forms import ProjectForm 
 
-class project(View):
-# Vista para listar los proyectos
-    def project_list(request):
-        projects = Project.objects.all()
-        return render(request, 'project/project_list.html', {'projects': projects})
+###   view de proyecto   #
+from .models import Artista_Model
+from .forms import ArtistaForm
+
+
+class Artista(View):
+    # Vista para listar los proyectos
+    def artista_list(request):
+        artistas = Artista_Model.objects.all()
+        return render(request, 'artista/artista_list.html', {'artistas': artistas})
 
     # Vista para crear un nuevo proyecto
-    def project_create(request):
+    @login_required
+    def artista_create(request):
         if request.method == 'POST':
-            form = ProjectForm(request.POST)
+            form = ArtistaForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('project_list')
+                return redirect('artista_list')
         else:
-            form = ProjectForm()
-        return render(request, 'project/project_form.html', {'form': form})
+            form = ArtistaForm()
+        return render(request, 'artista/artista_form.html', {'form': form})
 
     # Vista para actualizar un proyecto existente
-    def project_update(request, pk):
-        project = Project.objects.get(pk=pk)
+    @login_required
+    def artista_update(request, pk):
+        artista = Artista_Model.objects.get(pk=pk)
         if request.method == 'POST':
-            form = ProjectForm(request.POST, instance=project)
+            form = ArtistaForm(request.POST, instance=artista)
             if form.is_valid():
                 form.save()
-                return redirect('project_list')
+                return redirect('artista_list')
         else:
-            form = ProjectForm(instance=project)
-        return render(request, 'project_form.html', {'form': form})
+            form = ArtistaForm(instance=artista)
+        return render(request, 'artista/artista_form.html', {'form': form})
 
     # Vista para eliminar un proyecto
-    def project_delete(request, pk):
-        project = Project.objects.get(pk=pk)
+    def artista_delete(request, pk):
+        artista = Artista_Model.objects.get(pk=pk)
         if request.method == 'POST':
-            project.delete()
-            return redirect('project_list')
-        return render(request, 'project/project_confirm_delete.html', {'project': project})
-###   view de Task   #
-from .models import Task
-from .forms import TaskForm
+            artista.delete()
+            return redirect('artista_list')
+        return render(request, 'artista/artista_confirm_delete.html', {'artista': artista})
 
-class task(View):
 
-    # Vista para listar todas las tareas
-    def task_list(request):
-        tasks = Task.objects.all()
-        return render(request, 'task/task_list.html', {'tasks': tasks})
+###   view de Obra   #
+from .models import Obra_Model
+from .forms import ObraForm
 
-# Vista para crear una nueva tarea
-    def task_create(request):
+
+class Obra(View):
+
+    # Vista para listar todas las obras
+    def obras_list(request):
+        obras = Obra_Model.objects.all()
+        return render(request, 'obra/obra_list.html', {'obras': obras})
+
+    # Vista para crear una nueva obra
+    def obras_create(request):
         if request.method == "POST":
-            form = TaskForm(request.POST)
+            form = ObraForm(request.POST)
             if form.is_valid():
-                task = form.save(commit=False)
-                task.save()
-                return redirect('task_detail', pk=task.pk)
+                obra = form.save(commit=False)
+                obra.save()
+                return redirect('obra_detail', pk=obra.pk)
         else:
-            form = TaskForm()
-        return render(request, 'task/task_form.html', {'form': form})
+            form = ObraForm()
+        return render(request, 'obra/obra_form.html', {'form': form})
 
-    # Vista para ver los detalles de una tarea específica
-    def task_detail(request, pk):
-        task = get_object_or_404(Task, pk=pk)
-        return render(request, 'task/task_detail.html', {'task': task})
+    # Vista para ver los detalles de una obra específica
+    def obtras_detail(request, pk):
+        obra = get_object_or_404(Obra_Model, pk=pk)
+        return render(request, 'obra/obra_detail.html', {'obra': obra})
 
-    # Vista para editar una tarea existente
-    def task_edit(request, pk):
-        task = get_object_or_404(Task, pk=pk)
+    # Vista para editar una obra existente
+    def obras_edit(request, pk):
+        obra = get_object_or_404(Obra_Model, pk=pk)
         if request.method == "POST":
-            form = TaskForm(request.POST, instance=task)
+            form = ObraForm(request.POST, instance=obra)
             if form.is_valid():
-                task = form.save(commit=False)
-                task.save()
-                return redirect('task_detail', pk=task.pk)
+                obra = form.save(commit=False)
+                obra.save()
+                return redirect('obra_detail', pk=obra.pk)
         else:
-            form = TaskForm(instance=task)
-        return render(request, 'task/task_form.html', {'form': form})
+            form = ObraForm(instance=obra)
+        return render(request, 'obra/obra_form.html', {'form': form})
 
-    # Vista para eliminar una tarea existente
-    def task_delete(request, pk):
-        task = get_object_or_404(Task, pk=pk)
-        if request.method=='POST':
-            task.delete()
-            return redirect('task_list')
-        return render(request, 'task/task_confirm_delete.html', {'task': task})
-
+    # Vista para eliminar una obra existente
+    def obras_delete(request, pk):
+        obra = get_object_or_404(Obra_Model, pk=pk)
+        if request.method == 'POST':
+            obra.delete()
+            return redirect('obra_list')
+        return render(request, 'obra/obra_confirm_delete.html', {'obra': obra})

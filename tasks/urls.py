@@ -4,14 +4,14 @@ from . import views
 
 urlpatterns = [
     
-    path('project/', views.project.project_list, name='project_list'),
-    path('project/new', views.project.project_create, name='project_create'),
-    path('project/<int:pk>/edit/', views.project.project_update, name='project_update'),
-    path('project/<int:pk>/delete/', views.project.project_delete, name='project_delete'),
+    path('artista/', views.Artista.artista_list, name='artista_list'),
+    path('artista/new', views.Artista.artista_create, name='artista_create'),
+    path('artista/<int:pk>/edit/', views.Artista.artista_update, name='artista_update'),
+    path('artista/<int:pk>/delete/', views.Artista.artista_delete, name='artista_delete'),
    
-    path('task/', views.task.task_list, name='task_list'),
-    path('task/new/', views.task.task_create, name='task_create'),
-    path('task/<int:pk>/', views.task.task_detail, name='task_detail'),
-    path('task/<int:pk>/edit/', views.task.task_edit, name='task_edit'),
-    path('task/<int:pk>/delete/', views.task.task_delete, name='task_delete'),
+    path('obra/', views.Obra.obras_list, name='obra_list'),
+    path('obra/new/', views.Obra.obras_create, name='obra_create'),
+    path('obra/<int:pk>/', views.Obra.obtras_detail, name='obra_detail'),
+    path('obra/<int:pk>/edit/', views.Obra.obras_edit, name='obra_edit'),
+    path('obra/<int:pk>/delete/', views.Obra.obras_delete, name='obra_delete'),
 ]

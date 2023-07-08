@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>¿Estás seguro de que deseas eliminar la tarea "{{ task.title }}"?</h2>
+    <h2>¿Estás seguro de que deseas eliminar la tarea "{{ obra.title }}"?</h2>
     <form method="POST">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Eliminar</button>
     </form>
-    <a href="{% url 'task_detail' task.pk %}">Cancelar</a>
+    <a href="{% url 'obra_detail' obra.pk %}">Cancelar</a>
 {% endblock %}

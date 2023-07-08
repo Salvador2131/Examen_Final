@@ -1,5 +1,5 @@
 """
-ASGI config for arte project.
+ASGI config for arte artista.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
